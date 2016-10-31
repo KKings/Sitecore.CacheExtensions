@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Foundation", "Foundation", "{C48FAD42-34C6-45F2-80C6-69F18B3C5576}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKings.Foundation.Caching", "src\Foundation\Caching\code\KKings.Foundation.Caching.csproj", "{6AB79A95-398E-4D17-A892-9CCE621E05AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKings.Foundation.Caching.Tests", "src\Foundation\Caching\tests\KKings.Foundation.Caching.Tests\KKings.Foundation.Caching.Tests.csproj", "{F17E3816-370A-4AA6-B60A-E4AF5A9D9694}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6AB79A95-398E-4D17-A892-9CCE621E05AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB79A95-398E-4D17-A892-9CCE621E05AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB79A95-398E-4D17-A892-9CCE621E05AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB79A95-398E-4D17-A892-9CCE621E05AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F17E3816-370A-4AA6-B60A-E4AF5A9D9694}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F17E3816-370A-4AA6-B60A-E4AF5A9D9694}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F17E3816-370A-4AA6-B60A-E4AF5A9D9694}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F17E3816-370A-4AA6-B60A-E4AF5A9D9694}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6AB79A95-398E-4D17-A892-9CCE621E05AD} = {C48FAD42-34C6-45F2-80C6-69F18B3C5576}
+		{F17E3816-370A-4AA6-B60A-E4AF5A9D9694} = {C48FAD42-34C6-45F2-80C6-69F18B3C5576}
+	EndGlobalSection
+EndGlobal
