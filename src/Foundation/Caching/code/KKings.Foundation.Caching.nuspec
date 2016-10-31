@@ -14,4 +14,7 @@
     <copyright>Copyright 2016</copyright>
     <tags>Sitecore Caches CacheManager TransientCache Helix</tags>
   </metadata>
+  <files>
+    <file src=".\App_Config\Include\Foundation\KKings.Foundation.Caching.config" target="content" />
+  </files>
 </package>

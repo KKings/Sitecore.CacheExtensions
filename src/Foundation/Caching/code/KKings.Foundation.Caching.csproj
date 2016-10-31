@@ -79,10 +79,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="KKings.Foundation.Caching.ruleset" />
+    <None Include="KKings.Foundation.Caching.ruleset" />
     <Content Include="App_Config\Include\Foundation\KKings.Foundation.Caching.config" />
-    <Content Include="Readme.md" />
+    <None Include="Readme.md" />
     <Content Include="packages.config" />
+    <Content Include="KKings.Foundation.Caching.nuspec" />
     <None Include="web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
