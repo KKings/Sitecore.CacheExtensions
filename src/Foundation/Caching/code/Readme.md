@@ -1,8 +1,50 @@
-﻿### Adding a new cache
+﻿## Sitecore.CacheExtensions
+
+The Sitecore.CacheExtensions library is a series of extensions to provide configuration based caches, based on the helix design principles.
+
+### Installation
+Using nuget: Install-Package Sitecore.CacheExtensions
+
+### Injected Services
+
+The following classes are automatically injected into the Sitecore OTB Service Collection:
+
+* SitecoreCacheManager (ICacheManager) - Adds layer to expose configured caches
+* TransientCache (BaseTransientCache) - Adds caching per request within the HttpContext.Items
+* SessionCache (BaseSessionCache) - Adds caching per request within the HttpContext.Session
+
+To grab a reference to either the SitecoreCacheManager, TransientCache, or SessionCache, add a class that extends the IServicesConfigurator and add your classes that you would like to be resolved.
+
+```c#
+public class RegisterDependencies : IServicesConfigurator 
+{
+        public void Configure(IServiceCollection serviceCollection)
+        {
+            // Add your classes here using the serviceCollection methods
+        }
+}
+```
+```xml
+<?xml version="1.0"?>
+<configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
+  <sitecore>
+    <services>
+      <configurator type="[Class], [Assembly Name]" />
+    </services>
+  </sitecore>
+</configuration>
+
+```
+
+
+
+For more information, see: http://kamsar.net/index.php/2016/08/Dependency-Injection-in-Sitecore-8-2/
+
+### Adding a Sitecore Cache
 
 Add a new cache by adding a path configuration like so:
 
-```sh $ 
+```xml 
 <?xml version="1.0"?>
 <configuration xmlns:patch="http://www.sitecore.net/xmlconfig/">
     <sitecore>
@@ -12,7 +54,6 @@ Add a new cache by adding a path configuration like so:
     </sitecore>
 </configuration>
 ```
-
 
 ### Configuring the Cache
 

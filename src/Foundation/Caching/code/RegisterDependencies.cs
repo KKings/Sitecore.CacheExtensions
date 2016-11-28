@@ -15,6 +15,7 @@ namespace KKings.Foundation.Caching
             serviceCollection.AddSingleton<ICacheManager, SitecoreCacheManager>();
             serviceCollection.AddSingleton<ISitecoreCacheFactory, SitecoreCacheFactory>();
             serviceCollection.AddScoped<BaseTransientCache, TransientCache>();
+            serviceCollection.AddScoped<BaseSessionCache, SessionCache>();
         }
     }
 }

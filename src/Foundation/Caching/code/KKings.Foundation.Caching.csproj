@@ -60,7 +60,9 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caches\BaseSessionCache.cs" />
     <Compile Include="Caches\BaseTransientCache.cs" />
+    <Compile Include="Caches\SessionCache.cs" />
     <Compile Include="Factories\ISitecoreCacheFactory.cs" />
     <Compile Include="RegisterDependencies.cs" />
     <Compile Include="Factories\SitecoreCacheFactory.cs" />

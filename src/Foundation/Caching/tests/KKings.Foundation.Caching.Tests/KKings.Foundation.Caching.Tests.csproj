@@ -98,6 +98,7 @@
   <ItemGroup>
     <Compile Include="InitializeCachesTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionCacheTests.cs" />
     <Compile Include="TransientCacheTests.cs" />
     <Compile Include="ConfigurationReaderTests.cs" />
     <Compile Include="SitecoreCacheManagerTests.cs" />

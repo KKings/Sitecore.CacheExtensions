@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Sitecore.CacheExtensions</id>
-    <version>$version$</version>
+    <version>0.2.2</version>
     <title>Cache Extensions for Sitecore</title>
     <description>Caching extensions for creating and maintaining custom caches for Sitecore Development. Project is based on Helix Design Principles</description>
     <authors>Kyle Kingsbury</authors>
@@ -10,7 +10,7 @@
     <licenseUrl>https://github.com/KKings/Sitecore.CacheExtensions/blob/master/LICENSE.txt</licenseUrl>
     <projectUrl>https://github.com/KKings/Sitecore.CacheExtensions</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <releaseNotes>Initial Release</releaseNotes>
+    <releaseNotes>Adds Session Cache</releaseNotes>
     <copyright>Copyright 2016</copyright>
     <tags>Sitecore Caches CacheManager TransientCache Helix</tags>
   </metadata>
