@@ -9,6 +9,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKings.Foundation.Caching",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KKings.Foundation.Caching.Tests", "src\Foundation\Caching\tests\KKings.Foundation.Caching.Tests\KKings.Foundation.Caching.Tests.csproj", "{F17E3816-370A-4AA6-B60A-E4AF5A9D9694}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{D2B0A885-56A2-47A3-9161-427FBCB0B402}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

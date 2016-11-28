@@ -83,7 +83,6 @@
   <ItemGroup>
     <None Include="KKings.Foundation.Caching.ruleset" />
     <Content Include="App_Config\Include\Foundation\KKings.Foundation.Caching.config" />
-    <None Include="Readme.md" />
     <Content Include="packages.config" />
     <Content Include="KKings.Foundation.Caching.nuspec" />
     <None Include="web.config" />
