@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Caches\BaseTransientCache.cs" />
+    <Compile Include="Caches\SessionCache.cs" />
     <Compile Include="Factories\ISitecoreCacheFactory.cs" />
     <Compile Include="RegisterDependencies.cs" />
     <Compile Include="Factories\SitecoreCacheFactory.cs" />

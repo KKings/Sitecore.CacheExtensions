@@ -4,11 +4,10 @@ namespace KKings.Foundation.Caching.Caches
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Web;
 
-    public sealed class TransientCache : BaseTransientCache
-    {
+    public class SessionCache : ICache
+    {        
         /// <summary>
         /// Base Implementation of the HttpContext
         /// </summary>
@@ -23,23 +22,48 @@ namespace KKings.Foundation.Caching.Caches
         /// Local Dictionary Cache
         /// <para>Takes into account if the items are cleared</para>
         /// </summary>
-        internal ConcurrentDictionary<string, object> _localCache => this.httpContextBase.Items[this.ItemsKey] as ConcurrentDictionary<string, object> ?? new ConcurrentDictionary<string, object>();
-
-        public TransientCache(HttpContextBase httpContextBase) : this(httpContextBase, new List<KeyValuePair<string, object>>()) {}
-
-        public TransientCache(HttpContextBase httpContextBase, IList<KeyValuePair<string, object>> collection)
+        internal ConcurrentDictionary<string, object> _localCache
         {
+            get
+            {
+                var httpSessionStateBase = this.httpContextBase.Session;
+
+                if (httpSessionStateBase == null)
+                {
+                    return new ConcurrentDictionary<string, object>();
+                }
+
+                return httpSessionStateBase[this.ItemsKey] as ConcurrentDictionary<string, object> ?? new ConcurrentDictionary<string, object>();
+            }
+        }
+
+        public SessionCache(HttpContextBase httpContextBase) : this(httpContextBase, new List<KeyValuePair<string, object>>()) { }
+
+        public SessionCache(HttpContextBase httpContextBase, IList<KeyValuePair<string, object>> collection)
+        {
+
+            if (httpContextBase?.Session == null)
+            {
+                throw new ArgumentNullException(nameof(httpContextBase));
+            }
+
             this.httpContextBase = httpContextBase;
 
-            this.httpContextBase.Items[this.ItemsKey] = new ConcurrentDictionary<string, object>(collection);
+            var httpSessionStateBase = this.httpContextBase.Session;
+
+            if (httpSessionStateBase != null)
+            {
+                httpSessionStateBase[this.ItemsKey] = new ConcurrentDictionary<string, object>(collection);
+            }
         }
+
 
         /// <summary>
         /// Gets a cache entry by a cache key
         /// </summary>
         /// <param name="key">Cache Key</param>
         /// <returns>Cache entry or <c>default</c></returns>
-        public override T Get<T>(string key)
+        public virtual T Get<T>(String key) where T : class, new()
         {
             if (String.IsNullOrEmpty(key))
             {
@@ -55,7 +79,7 @@ namespace KKings.Foundation.Caching.Caches
         /// <typeparam name="T">Typeof of Cache Entry</typeparam>
         /// <param name="key">Cache Key</param>
         /// <param name="value">Cache Entry</param>
-        public override void Set<T>(string key, T value)
+        public virtual void Set<T>(String key, T value) where T : class, new()
         {
             if (String.IsNullOrEmpty(key))
             {
@@ -64,14 +88,19 @@ namespace KKings.Foundation.Caching.Caches
 
             this._localCache.AddOrUpdate(key, value, (k, old) => value);
 
-            this.httpContextBase.Items[this.ItemsKey] = this._localCache;
+            var httpSessionStateBase = this.httpContextBase.Session;
+
+            if (httpSessionStateBase != null)
+            {
+                httpSessionStateBase[this.ItemsKey] = this._localCache;
+            }
         }
 
         /// <summary>
         /// Removes a Cache Entry if it exists by key (if exists)
         /// </summary>
         /// <param name="key">Key</param>
-        public override void Evict(string key)
+        public virtual void Evict(String key)
         {
             if (!this.Contains(key))
             {
@@ -80,15 +109,22 @@ namespace KKings.Foundation.Caching.Caches
 
             object obj;
             this._localCache.TryRemove(key, out obj);
-            this.httpContextBase.Items[this.ItemsKey] = this._localCache;
+
+            var httpSessionStateBase = this.httpContextBase.Session;
+
+            if (httpSessionStateBase != null)
+            {
+                httpSessionStateBase[this.ItemsKey] = this._localCache;
+            }
         }
+
 
         /// <summary>
         /// Removes all Cache Entries
         /// </summary>
-        public override void EvictAll()
+        public virtual void EvictAll()
         {
-            if (this._localCache.Keys.Any())
+            if (!this._localCache.IsEmpty)
             {
                 this._localCache.Clear();
             }
@@ -97,9 +133,9 @@ namespace KKings.Foundation.Caching.Caches
         /// <summary>
         /// Determines whether the Cache contains the key
         /// </summary>
-        /// <param name="key">Key</param>
+        /// <param name="key">Cache Key</param>
         /// <returns><c>True</c> if the cache contains the key</returns>
-        public bool Contains(string key)
+        public virtual bool Contains(string key)
         {
             return this._localCache.ContainsKey(key);
         }
