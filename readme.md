@@ -11,7 +11,7 @@ The following classes are automatically injected into the Sitecore OTB Service C
 
 * SitecoreCacheManager (ICacheManager) - Adds layer to expose configured caches
 * TransientCache (BaseTransientCache) - Adds caching per request within the HttpContext.Items
-* SessionCache (BaseSessionCache) - Adds caching per request within the HttpContext.Session
+* SessionCache (BaseSessionCache) - Adds caching per session within the HttpContext.Session
 
 To grab a reference to either the SitecoreCacheManager, TransientCache, or SessionCache, add a class that extends the IServicesConfigurator and add your classes that you would like to be resolved.
 
